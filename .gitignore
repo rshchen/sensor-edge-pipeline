@@ -37,11 +37,29 @@ dist/
 # ==========================================
 # C++ / CMake Build Artifacts
 # ==========================================
-build/
+# 匹配根目錄與所有子目錄（如 cpp/build/）
+**/build/
 bin/
 lib/
 CMakeCache.txt
 CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# 編譯中繼目標檔與二進位執行檔
+*.o
+*.obj
+*.exe
+sensor_infer
+
+# ==========================================
+# Third-Party Prebuilt Libraries
+# ==========================================
+# 排除大型預編譯動態庫
+cpp/third_party/onnxruntime/lib/
+*.dylib
+*.so
+*.dll
 
 # ==========================================
 # Datasets & Large Models
@@ -49,8 +67,9 @@ CMakeFiles/
 # 大型本機資料集
 data/
 
-# 二進位模型檔案（僅保留目錄結構）
+# 二進位模型檔案與分離權重（僅保留目錄結構）
 models/*.onnx
+models/*.onnx.data
 models/*.pt
 models/*.bin
 !models/.gitkeep
